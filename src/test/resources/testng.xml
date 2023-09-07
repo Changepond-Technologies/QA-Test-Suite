@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests">
+	<test name="test2">
+		<parameter name="browsername" value="chrome"></parameter>
+		<classes>
+			<class name="com.ep.cucumber.runner.RunnerClass2"></class>
+			<class name="com.ep.cucumber.runner.RunnerClass6"></class>
+			<class name="com.ep.cucumber.runner.RunnerClass7"></class>
+		</classes>
+	</test>
+	<test name="test3">
+		<parameter name="browsername" value="edge"></parameter>
+		<classes>
+			<class name="com.ep.cucumber.runner.RunnerClass3"></class>
+			<class name="com.ep.cucumber.runner.RunnerClass8"></class>
+		</classes>
+	</test>
+	<test name="test4">
+		<parameter name="browsername" value="firefox"></parameter>
+		<classes>
+			<class name="com.ep.cucumber.runner.RunnerClass4"></class>
+			<class name="com.ep.cucumber.runner.RunnerClass5"></class>
+		</classes>
+	</test>
+</suite>
