@@ -78,7 +78,8 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          cd /home/vsts/work/1/s/
+          cd /home/vsts/work/1/s/qatest-new-1/
           ls
-          # tar -cvf testsuite.tar --directory=. *
+          tar -xvf *.tar
+          ls
     
