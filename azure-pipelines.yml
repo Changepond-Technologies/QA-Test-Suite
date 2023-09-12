@@ -28,6 +28,8 @@ stages:
           pwd
           cd /home/vsts/work/1/s
           ls
+          tar -cvf testsuite.tar .
+          ls
           
           # current_directory=$(pwd)
 
