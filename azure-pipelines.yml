@@ -78,22 +78,5 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-
-
-          artifact_path="/home/vsts/work/1/s/qatest-new-1/testsuite.tar"
-
-          mkdir /home/vsts/work/1/s/qatest
-
-          extract_dir="/home/vsts/work/1/s/qatest"
-
-          # Check if the artifact exists
-          if [ -f "$artifact_path" ]; then
-            # Create the extraction directory if it doesn't exist
-            mkdir -p "$extract_dir"
-            
-            # Extract the tarball (without gzip)
-            tar -xvf "$artifact_path" -C "$extract_dir"
-          else
-            echo "Artifact not found: $artifact_path"
-          fi
+          ls
     
