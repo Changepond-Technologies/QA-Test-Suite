@@ -25,7 +25,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          cd /home/vsts/work/1/s
+          cd /home/vsts/work/1/
           
           tar -cvf testsuite.tar /s
 
