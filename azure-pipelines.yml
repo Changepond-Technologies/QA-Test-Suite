@@ -78,25 +78,22 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-        
+
           # Define the path to the downloaded artifact
 
-          artifact_path=$(find $(Agent.BuildDirectory)/s -name "*.tar")
+          artifact_path="/home/vsts/work/1/s/"
 
           # Specify the directory where you want to extract the contents
-          extract_dir=$(Agent.BuildDirectory)/extracted
+          extract_dir="/home/vsts/work/1/s/"
 
           # Check if the artifact exists
           if [ -f "$artifact_path" ]; then
             # Create the extraction directory if it doesn't exist
             mkdir -p "$extract_dir"
-
-            # Extract the tarball
-            tar -xzvf "$artifact_path" -C "$extract_dir"
+            
+            # Extract the tarball (without gzip)
+            tar -xvf "$artifact_path" -C "$extract_dir"
           else
             echo "Artifact not found: $artifact_path"
           fi
-         
-          # tar -xvf *.tar
-          # ls
     
