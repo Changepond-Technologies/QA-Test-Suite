@@ -47,6 +47,24 @@ stages:
         buildNumber: '$(Build.BuildNumber)'
         projectKey: 'qatest'
         failNoOp: true
-
+  
+    - task: ArtifactoryGenericDownload@3
+      inputs:
+        connection: 'JFrogServiceConnectionNew'
+        specSource: 'taskConfiguration'
+        fileSpec: |
+          {
+            "files": [
+              {
+                "pattern": "*.tar",
+                "target": "qatest-new-1"
+              }
+            ]
+          }
+        collectBuildInfo: true
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+        projectKey: 'qatest'
+        failNoOp: true
         
     
