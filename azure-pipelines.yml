@@ -26,6 +26,8 @@ stages:
         targetType: 'inline'
         script: |
           pwd
+          cd /home/vsts/work/1/s
+          ls
           
           # current_directory=$(pwd)
 
