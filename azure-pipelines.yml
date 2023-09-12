@@ -47,6 +47,12 @@ stages:
         buildNumber: '$(Build.BuildNumber)'
         projectKey: 'qatest'
         failNoOp: true
+    
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          ls
   
     - task: ArtifactoryGenericDownload@3
       displayName: Download tar from JFrog
