@@ -27,6 +27,7 @@ stages:
         script: |
           cd /home/vsts/work/1/s/
           tar -cvf testsuite.tar .
+          ls
           
     - task: ArtifactoryGenericUpload@2
       displayName: upload tar to JFrog
