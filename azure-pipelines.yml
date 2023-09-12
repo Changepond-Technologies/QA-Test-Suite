@@ -79,12 +79,12 @@ stages:
         targetType: 'inline'
         script: |
 
-          # Define the path to the downloaded artifact
 
-          artifact_path="/home/vsts/work/1/s/"
+          artifact_path="/home/vsts/work/1/s/qatest-new-1/testsuite.tar"
 
-          # Specify the directory where you want to extract the contents
-          extract_dir="/home/vsts/work/1/s/"
+          mkdir /home/vsts/work/1/s/qatest
+
+          extract_dir="/home/vsts/work/1/s/qatest"
 
           # Check if the artifact exists
           if [ -f "$artifact_path" ]; then
