@@ -49,6 +49,7 @@ stages:
         failNoOp: true
   
     - task: ArtifactoryGenericDownload@3
+      displayName: Download tar from JFrog
       inputs:
         connection: 'JFrogServiceConnectionNew'
         specSource: 'taskConfiguration'
