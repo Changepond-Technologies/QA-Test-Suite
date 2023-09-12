@@ -16,7 +16,7 @@ pool:
   
 stages:
 - stage: TarCovertion
-  displayName: TarCovertion
+  displayName: Covertion to Tar
   jobs:
   - job: TarCovertion
     steps:
@@ -26,15 +26,27 @@ stages:
         targetType: 'inline'
         script: |
           cd /home/vsts/work/1/
-          
           tar -cvf testsuite.tar /s
-
           ls
-          
-          # tar -cvf testsuite.tar /s
-          # current_directory=$(pwd)
+    - task: ArtifactoryGenericUpload@2
+      displayName: upload tar to JFrog
+      inputs:
+        artifactoryService: 'JFrogServiceConnectionNew'
+        specSource: 'taskConfiguration'
+        fileSpec: |
+          {
+            "files": [
+              {
+                "pattern": "$(Pipeline.Workspace)/*.tar",
+                "target": "qatest-new-1"
+              }
+            ]
+          }
+        collectBuildInfo: true
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+        projectKey: 'qatest'
+        failNoOp: true
 
-          # echo "Current Directory: $current_directory"
-          
-          # tar -cvf testsuite.tar .
+        
     
