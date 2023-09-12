@@ -25,12 +25,11 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          pwd
-          cd /home/vsts/work/1/
-          ls
-          tar -cvf testsuite.tar .
+          cd /home/vsts/work/1/s
+          
           ls
           
+          # tar -cvf testsuite.tar /s
           # current_directory=$(pwd)
 
           # echo "Current Directory: $current_directory"
