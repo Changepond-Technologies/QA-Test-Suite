@@ -80,6 +80,7 @@ stages:
         script: |
           cd /home/vsts/work/1/s/qatest-new-1/
           ls
-          tar -xvf *.tar
-          ls
+         
+          # tar -xvf *.tar
+          # ls
     
