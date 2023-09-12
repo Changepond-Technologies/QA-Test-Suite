@@ -26,8 +26,7 @@ stages:
         targetType: 'inline'
         script: |
           cd /home/vsts/work/1/s/
-          tar -cvf testsuite.tar .
-          ls
+          tar -cvf testsuite.tar --directory=. *
           
     - task: ArtifactoryGenericUpload@2
       displayName: upload tar to JFrog
