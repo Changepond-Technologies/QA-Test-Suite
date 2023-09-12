@@ -27,6 +27,8 @@ stages:
         script: |
           cd /home/vsts/work/1/s
           
+          tar -cvf testsuite.tar /s
+
           ls
           
           # tar -cvf testsuite.tar /s
