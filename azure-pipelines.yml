@@ -67,5 +67,12 @@ stages:
         buildNumber: '$(Build.BuildNumber)'
         projectKey: 'qatest'
         failNoOp: true
-        
+
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          cd /home/vsts/work/1/s/
+          ls
+          # tar -cvf testsuite.tar --directory=. *
     
