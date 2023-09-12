@@ -26,7 +26,7 @@ stages:
         targetType: 'inline'
         script: |
           pwd
-          cd /home/vsts/work/1/s
+          cd /home/vsts/work/1/
           ls
           tar -cvf testsuite.tar .
           ls
