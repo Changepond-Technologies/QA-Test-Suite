@@ -49,6 +49,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
+          mkdir testJarDirectory
           ls
   
     - task: ArtifactoryGenericDownload@3
@@ -76,7 +77,6 @@ stages:
         targetType: 'inline'
         script: |
           file qatest-new-1
-          mkdir testJarDirectory
           tar -xvf qatest-new-1 -C /testJarDirectory
           ls
     
