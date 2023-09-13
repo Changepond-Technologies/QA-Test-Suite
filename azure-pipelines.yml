@@ -63,7 +63,6 @@ stages:
         targetType: 'inline'
         script: |
           pwd
-          mkdir testJarDirectory
           ls
   
     - task: ArtifactoryGenericDownload@3
@@ -76,7 +75,7 @@ stages:
             "files": [
               {
                 "pattern": "qatest-new-1/*.tar",
-                "target": "$(Pipeline.Workspace)/testJarDirectory"
+                "target": "$(Pipeline.Workspace)"
               }
             ]
           }
@@ -90,7 +89,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          ls /home/vsts/work/1/testJarDirectory
+          ls $(Pipeline.Workspace)
           
           
     
