@@ -74,8 +74,8 @@ stages:
           {
             "files": [
               {
-                "pattern": "*.tar",
-                "target": "qatest-new-1"
+                "pattern": "qatest-new-1/*.tar",
+                "target": "$(Pipeline.Workspace)/testJarDirectory"
               }
             ]
           }
@@ -89,11 +89,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          file qatest-new-1
-          mkdir unzipedtestfile
-          tar -xvf qatest-new-1 -C /home/vsts/work/1/s/unzipedtestfile
-          cd /home/vsts/work/1/s/unzipedtestfile
-          ls /home/vsts/work/1/s/unzipedtestfile
+          ls /home/vsts/work/1/s/testJarDirectory
           
           
     
