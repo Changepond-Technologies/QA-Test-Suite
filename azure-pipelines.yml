@@ -75,7 +75,7 @@ stages:
             "files": [
               {
                 "pattern": "qatest-new-1/*.tar",
-                "target": "$(Pipeline.Workspace)/testJarDirectory"
+                "target": "$(Pipeline.Workspace)/s/testJarDirectory"
               }
             ]
           }
