@@ -9,14 +9,10 @@ pr: none
 
 pool:
   vmImage: ubuntu-latest
-
-# variables:
-# - name: repositoryname
-#   value: cucumberNew-libs-snapshot
   
 stages:
 - stage: TarCovertion
-  displayName: Covertion to Tar
+  displayName: Covert to Tar
   jobs:
   - job: TarCovertion
     steps:
