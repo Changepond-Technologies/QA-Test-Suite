@@ -18,6 +18,7 @@ stages:
     steps:
   
     - task: Bash@3
+      displayName: Covert to Tar
       inputs:
         targetType: 'inline'
         script: |
