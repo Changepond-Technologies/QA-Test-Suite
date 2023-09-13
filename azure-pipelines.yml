@@ -91,5 +91,5 @@ stages:
         script: |
           file qatest-new-1
           mkdir unzipedtestfile
-          tar -xvf qatest-new-1 -c $(Pipeline.Workspace)/unzipedtestfile
+          tar -xvf qatest-new-1 -C $(Pipeline.Workspace)/unzipedtestfile
     
