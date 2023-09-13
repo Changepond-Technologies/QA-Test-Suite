@@ -91,5 +91,6 @@ stages:
         script: |
           file qatest-new-1
           tar -xvf qatest-new-1
+          cd qatest-new-1
           ls
     
