@@ -63,6 +63,8 @@ stages:
         targetType: 'inline'
         script: |
           pwd
+          mkdir untarfolder
+          cd untarfolder
           ls
   
     - task: ArtifactoryGenericDownload@3
@@ -75,7 +77,7 @@ stages:
             "files": [
               {
                 "pattern": "qatest-new-1/*.tar",
-                "target": "$(Pipeline.Workspace)"
+                "target": "/home/vsts/work/1/s/untarfolder"
               }
             ]
           }
@@ -89,7 +91,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          ls $(Pipeline.Workspace)
+          ls /home/vsts/work/1/s/untarfolder
           
           
     
