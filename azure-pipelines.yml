@@ -93,7 +93,7 @@ stages:
           mkdir unzipedtestfile
           tar -xvf qatest-new-1 -C /home/vsts/work/1/s/unzipedtestfile
           cd /home/vsts/work/1/s/unzipedtestfile
-          ls
+          ls /home/vsts/work/1/s/unzipedtestfile
           
           
     
