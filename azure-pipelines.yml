@@ -90,5 +90,6 @@ stages:
         targetType: 'inline'
         script: |
           file qatest-new-1
-          tar -xvf qatest-new-1
+          mkdir unzipedtestfile
+          tar -xvf qatest-new-1 -c $(Pipeline.Workspace)/unzipedtestfile
     
