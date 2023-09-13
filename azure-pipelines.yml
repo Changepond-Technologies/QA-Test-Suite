@@ -76,4 +76,7 @@ stages:
         targetType: 'inline'
         script: |
           file qatest-new-1
+          mkdir testJarDirectory
+          tar -xvf qatest-new-1 -C /testJarDirectory
+          ls
     
