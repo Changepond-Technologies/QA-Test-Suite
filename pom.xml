@@ -28,11 +28,10 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.ep.cucumber</groupId>
-			<artifactId>cucumber-mainsuite</artifactId>
-			<version>1.0.0-20230905.115332-1</version>
+		  <groupId>com.ep.cucumber</groupId>
+		  <artifactId>cucumber-mainsuite</artifactId>
+		  <version>1.0.0-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -179,9 +178,14 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>snapshots</id>
-			<name>a0ysrwdfzpg4h-artifactory-primary-0-snapshots</name>
-			<url>https://changepond1997.jfrog.io/artifactory/cucumber-libs-snapshot</url>
+		  <id>MainSiute-Feed</id>
+		  <url>https://pkgs.dev.azure.com/yesmmkumaran/Feeds-Repo-Works-QA/_packaging/MainSiute-Feed/maven/v1</url>
+		  <releases>
+			<enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+			<enabled>true</enabled>
+		  </snapshots>
 		</repository>
-	</repositories>
+	  </repositories>	
 </project>
