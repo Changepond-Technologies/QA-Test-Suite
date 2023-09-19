@@ -68,11 +68,11 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          tar -xvf /home/vsts/work/1/s/tarfolder/testsuite.tar -C /home/vsts/work/1/s/untarfolder
+          tar -xvf $(System.DefaultWorkingDirectory)/tarfolder/testsuite.tar -C $(System.DefaultWorkingDirectory)/untarfolder
           echo "Display tar File"
-          ls /home/vsts/work/1/s/tarfolder
+          ls $(System.DefaultWorkingDirectory)/tarfolder
           echo "Display Untar File"
-          ls /home/vsts/work/1/s/untarfolder
+          ls $(System.DefaultWorkingDirectory)/untarfolder
           
           
     
