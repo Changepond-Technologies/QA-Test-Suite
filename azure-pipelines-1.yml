@@ -68,7 +68,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          ls 
+          pwd
           
           
     
