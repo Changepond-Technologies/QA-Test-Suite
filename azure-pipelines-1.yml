@@ -37,7 +37,7 @@ stages:
         targetType: 'inline'
         script: |
           cd /home/vsts/work/1/s/
-          tar -cvf testsuite-1.0.0.tar --directory=. *
+          tar -cvf testsuite.tar --directory=. *
           pwd
           mkdir untarfolder
           mkdir tarfolder
@@ -61,7 +61,7 @@ stages:
         feedsToUse: 'internal'
         vstsFeed: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
         vstsFeedPackage: 'tarfolder'
-        vstsPackageVersion: '1.0.0'
+        vstsPackageVersion: '0.0.1'
     
     - task: Bash@3
       displayName: Display Folder with untar files
