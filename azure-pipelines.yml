@@ -17,19 +17,19 @@ stages:
   - job: TarCovertion
     steps:
     
-    # - task: Maven@4
-    #   displayName: Build Testsuite 
-    #   inputs:
-    #     mavenPomFile: 'pom.xml'
-    #     publishJUnitResults: false
-    #     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    #     javaHomeOption: 'JDKVersion'
-    #     jdkVersionOption: '1.11'
-    #     mavenVersionOption: 'Default'
-    #     mavenAuthenticateFeed: true
-    #     effectivePomSkip: false
-    #     sonarQubeRunAnalysis: false
-    #     goals: 'package'
+    - task: Maven@4
+      displayName: Build Testsuite 
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: false
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.11'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: true
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+        goals: 'package'
     - task: Bash@3
       displayName: Covert to Tar
       inputs:
@@ -48,7 +48,7 @@ stages:
             "files": [
               {
                 "pattern": "$(Pipeline.Workspace)/*.tar",
-                "target": "qatest-new-1"
+                "target": "libs-snapshot-local"
               }
             ]
           }
@@ -76,7 +76,7 @@ stages:
           {
             "files": [
               {
-                "pattern": "qatest-new-1/*.tar",
+                "pattern": "libs-snapshot-local/*.tar",
                 "target": "/home/vsts/work/1/s/untarfolder"
               }
             ]
