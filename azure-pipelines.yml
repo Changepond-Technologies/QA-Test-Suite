@@ -64,8 +64,7 @@ stages:
         script: |
           pwd
           mkdir untarfolder
-          cd untarfolder
-          ls
+          mkdir tarfolder
   
     - task: ArtifactoryGenericDownload@3
       displayName: Download tar from JFrog
@@ -77,7 +76,7 @@ stages:
             "files": [
               {
                 "pattern": "libs-snapshot-local/*.tar",
-                "target": "/home/vsts/work/1/s/untarfolder/"
+                "target": "/home/vsts/work/1/s/tarfolder/"
               }
             ]
           }
@@ -90,7 +89,10 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          tar -xvf testsuite.tar
+          tar -xvf /home/vsts/work/1/s/tarfolder/testsuite.tar -C /home/vsts/work/1/s/untarfolder
+          echo "Display tar File"
+          ls /home/vsts/work/1/s/tarfolder
+          echo "Display Untar File"
           ls /home/vsts/work/1/s/untarfolder
           
           
