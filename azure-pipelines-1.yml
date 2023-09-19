@@ -69,6 +69,8 @@ stages:
         targetType: 'inline'
         script: |
           pwd
+          cd /home/vsts/work/1/s/tarfolder
+          ls
           
           
     
