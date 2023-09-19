@@ -41,7 +41,10 @@ stages:
           pwd
           mkdir untarfolder
           mkdir tarfolder
-          
+    - task: CopyFiles@2
+      inputs:
+        Contents: '*.tar'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: UniversalPackages@0
       displayName: Publish the TAR file to feed
       inputs:
