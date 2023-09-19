@@ -78,7 +78,7 @@ stages:
             "files": [
               {
                 "pattern": "libs-snapshot-local/*.tar",
-                "target": "/home/vsts/work/1/s/untarfolder"
+                "target": "/home/vsts/work/1/s/untarfolder/"
               }
             ]
           }
