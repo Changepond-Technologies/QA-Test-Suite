@@ -68,8 +68,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          cd /home/vsts/work/1/s/tarfolder
-          ls /home/vsts/work/1/s/tarfolder
+          ls 
           
           
     
