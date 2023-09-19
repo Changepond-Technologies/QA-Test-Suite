@@ -60,8 +60,8 @@ stages:
         downloadDirectory: '$(System.DefaultWorkingDirectory)/tarfolder/'
         feedsToUse: 'internal'
         vstsFeed: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
-        vstsFeedPackage: 'tarfolder'
-        vstsPackageVersion: '0.0.1'
+        vstsFeedPackage: 'tarfolder.tar'
+        vstsPackageVersion: '0.0.2'
     
     - task: Bash@3
       displayName: Display Folder with untar files
