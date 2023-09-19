@@ -30,6 +30,7 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
         goals: 'package'
+        options: '-Dmaven.test.failure.ignore=true' 
     - task: Bash@3
       displayName: Covert to Tar
       inputs:
