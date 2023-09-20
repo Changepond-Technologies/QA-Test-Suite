@@ -30,7 +30,7 @@
 		<dependency>
 		  <groupId>com.ep.cucumber</groupId>
 		  <artifactId>cucumber-mainsuite</artifactId>
-		  <version>#{${{ parameters.mainsuite_version }}}#</version>
+		  <version>#{${{ parameters.Mainsuite_Version }}}#</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
