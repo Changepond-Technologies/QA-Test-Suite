@@ -17,51 +17,52 @@ parameters:
     default: None
   
 stages:
+
 - ${{ if eq(parameters.Testsuite_Version, 'None') }}:
-- stage: Build_testsuite_latest_version
-  displayName: Build testsuite with latest version
-  jobs:
-  - job: TarCovertion_Build_testsuite_selected_version
-    steps:
-    
-    - task: Maven@4
-      displayName: Build Testsuite 
-      inputs:
-        mavenPomFile: 'pom.xml'
-        publishJUnitResults: false
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.11'
-        mavenVersionOption: 'Default'
-        mavenAuthenticateFeed: true
-        effectivePomSkip: false
-        sonarQubeRunAnalysis: false
-        goals: 'package'
-        options: '-Dmaven.test.failure.ignore=true' 
-    - task: Bash@3
-      displayName: Covert to Tar
-      inputs:
-        targetType: 'inline'
-        script: |
-          pwd
-          tar -cvf testsuite.tar --directory=. *
-          
-    - task: CopyFiles@2
-      displayName: Copy the tar file
-      inputs:
-        Contents: '*.tar'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
- 
-    - task: UniversalPackages@0
-      displayName: Publish the TAR file to feed
-      inputs:
-        command: 'publish'
-        publishDirectory: '$(Build.ArtifactStagingDirectory)'
-        feedsToUsePublish: 'internal'
-        vstsFeedPublish: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
-        vstsFeedPackagePublish: 'testsuite.tar'
-        versionOption: 'patch'
-        packagePublishDescription: 'publish tar to azure feed'
+  - stage: Build_testsuite_latest_version
+    displayName: Build testsuite with latest version
+    jobs:
+    - job: TarCovertion_Build_testsuite_selected_version
+      steps:
+      
+      - task: Maven@4
+        displayName: Build Testsuite 
+        inputs:
+          mavenPomFile: 'pom.xml'
+          publishJUnitResults: false
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
+          mavenVersionOption: 'Default'
+          mavenAuthenticateFeed: true
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: false
+          goals: 'package'
+          options: '-Dmaven.test.failure.ignore=true' 
+      - task: Bash@3
+        displayName: Covert to Tar
+        inputs:
+          targetType: 'inline'
+          script: |
+            pwd
+            tar -cvf testsuite.tar --directory=. *
+            
+      - task: CopyFiles@2
+        displayName: Copy the tar file
+        inputs:
+          Contents: '*.tar'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  
+      - task: UniversalPackages@0
+        displayName: Publish the TAR file to feed
+        inputs:
+          command: 'publish'
+          publishDirectory: '$(Build.ArtifactStagingDirectory)'
+          feedsToUsePublish: 'internal'
+          vstsFeedPublish: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
+          vstsFeedPackagePublish: 'testsuite.tar'
+          versionOption: 'patch'
+          packagePublishDescription: 'publish tar to azure feed'
 
 - stage: Build_testsuite_selected_version
   displayName: Build testsuite selected version
