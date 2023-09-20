@@ -15,6 +15,9 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
+variables:
+- name: replace_value
+  value: 2.0.0-SNAPSHOT
   
 stages:
 
@@ -25,7 +28,19 @@ stages:
     jobs:
     - job: TarCovertion_Build_testsuite_selected_version
       steps:
-      
+      - task: replacetokens@5
+        inputs:
+          targetFiles: '**/*.xml'
+          encoding: 'auto'
+          tokenPattern: 'default'
+          writeBOM: true
+          actionOnMissing: 'warn'
+          keepToken: false
+          actionOnNoFiles: 'warn'
+          enableTransforms: false
+          enableRecursion: false
+          useLegacyPattern: false
+          enableTelemetry: true
       - task: Maven@4
         displayName: Build Testsuite 
         inputs:
