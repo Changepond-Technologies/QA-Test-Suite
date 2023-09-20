@@ -16,7 +16,7 @@ parameters:
     type: string
     default: 'Latest'
 variables:
-- name: replace_value
+- name: mainsuite_version
   value: 2.0.0-SNAPSHOT
   
 stages:
@@ -30,7 +30,7 @@ stages:
       steps:
       - task: replacetokens@5
         inputs:
-          targetFiles: '**/*.xml'
+          targetFiles: 'pom.xml'
           encoding: 'auto'
           tokenPattern: 'default'
           writeBOM: true
