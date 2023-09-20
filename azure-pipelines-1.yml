@@ -12,23 +12,26 @@ pool:
 
 parameters:
   - name: Testsuite_Version
-    displayName: 'Testsuite Version'
+    displayName: 'Testsuite Versions'
     type: string
     default: 'Latest'
     # description: 'Enter the Testsuite Version (optional).'
 
   - name: Mainsuite_feed_Version
-    displayName: 'Mainsuite Version'
+    displayName: 'Mainsuite Versions'
     type: string
     default: 'None'
   
   - name: VersionOption
+    displayName: 'Version Options'
     type: string
-    default: 'patch'  # Set the default value to 'patch'
+    default: ''
+    values:
+      - major 
+      - minor 
+      - patch
 
-variables:
-  - name: VersionOption
-    value: 'patch'
+
 
 stages:
   
