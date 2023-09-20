@@ -17,7 +17,7 @@ parameters:
     default: 'Latest'
     # description: 'Enter the Testsuite Version (optional).'
 
-  - name: Mainsuite_feed_Version
+  - name: Mainsuite_Version
     displayName: 'Mainsuite Versions'
     type: string
     default: 'None'
@@ -45,19 +45,13 @@ stages:
       - name: Mainsuite_Version
         value: ${{ parameters.Mainsuite_feed_Version }}
       steps:
-      - task: replacetokens@5
+      - task: Bash@3
+        displayName: Override Mainsuite Version
         inputs:
-          targetFiles: 'pom.xml'
-          encoding: 'auto'
-          tokenPattern: 'default'
-          writeBOM: true
-          actionOnMissing: 'warn'
-          keepToken: false
-          actionOnNoFiles: 'warn'
-          enableTransforms: false
-          enableRecursion: false
-          useLegacyPattern: false
-          enableTelemetry: true
+          targetType: 'inline'
+          script: |
+            pwd
+            sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+-SNAPSHOT/$(Mainsuite_Version)/g' pom.xml
       - task: Maven@4
         displayName: Build Testsuite 
         inputs:
