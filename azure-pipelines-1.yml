@@ -31,6 +31,9 @@ parameters:
       - major 
       - minor 
       - patch
+variables:
+  - name: Mainsuite_Version
+    value: ${{ parameters.Mainsuite_feed_Version }}
 
 stages:
   
@@ -41,9 +44,6 @@ stages:
     displayName: Build testsuite with latest version 
     jobs:
     - job: TarCovertion_Build_testsuite_latest_version
-      variables:
-      - name: Mainsuite_Version
-        value: ${{ parameters.Mainsuite_feed_Version }}
       steps:
       - task: Bash@3
         displayName: Override Mainsuite Version
