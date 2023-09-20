@@ -32,8 +32,6 @@ parameters:
       - minor 
       - patch
 
-
-
 stages:
   
 # Build testsuite with latest version
