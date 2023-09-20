@@ -73,7 +73,7 @@ stages:
         vstsFeed: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
         vstsFeedPackage: '2392dfaf-1c23-40a5-a829-e75d0104a0fa'
         # vstsPackageVersion: '*'
-        vstsPackageVersion: '$(parameters.BuildConfiguration)'
+        vstsPackageVersion: '${{ parameters.BuildConfiguration }}'
     - task: Bash@3
       displayName: Display Folder with untar files
       inputs:
