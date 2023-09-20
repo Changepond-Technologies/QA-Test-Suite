@@ -15,15 +15,6 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
-
-  # - name: versionOption 
-  #   displayName: 'version Option'
-  #   type: string
-  #   default: 'Patch'
-  #   values:
-  #   - Major
-  #   - Minor
-  #   - Patch
   
 stages:
 # Build testsuite with latest version
