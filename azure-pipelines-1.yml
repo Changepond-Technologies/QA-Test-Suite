@@ -29,11 +29,10 @@ stages:
   
 # Build testsuite with latest version
 - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
-  - stage: Build_testsuite_latest_version
-    
+  - stage: Build_testsuite_latest_version  
+    displayName: Build testsuite with latest version 
     jobs:
-    - job: TarCovertion_Build_testsuite_selected_version
-      displayName: Build testsuite with latest version
+    - job: TarCovertion_Build_testsuite_latest_version
       steps:
       - task: replacetokens@5
         inputs:
@@ -91,10 +90,9 @@ stages:
 # Build testsuite with selected version
 - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
   - stage: Build_testsuite_selected_version
-    
+    displayName: Build testsuite selected version
     jobs:
-    - job: TarCovertion_Build_testsuite_selected_version
-      displayName: Build testsuite selected version
+    - job: TarCovertion_Build_testsuite_selected_version     
       steps:
       - task: Bash@3
         displayName: Create unzip Directory
