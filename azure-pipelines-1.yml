@@ -182,7 +182,8 @@ stages:
           targetType: 'inline'
           script: |
             pwd
-            sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+-SNAPSHOT/$(Mainsuite_Version)/g' /unzipfolder/pom.xml
+            CD /unzipfolder
+            sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+-SNAPSHOT/$(Mainsuite_Version)/g' pom.xml
       - task: Maven@4
         displayName: Build Testsuite 
         inputs:
