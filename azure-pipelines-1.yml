@@ -34,7 +34,7 @@ parameters:
 
 stages:
   
-# Build testsuite with latest version
+# Build testsuite with latest version and using new mainsuite jar
 # - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
 - ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
   - stage: Build_testsuite_latest_version  
@@ -91,6 +91,7 @@ stages:
           versionOption: '${{ parameters.VersionOption }}'
           packagePublishDescription: 'publish tar to azure feed'
 
+# Build testsuite with latest version and using pom.xml noted mainsuite jar
 - ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), eq(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
   - stage: Build_testsuite_latest_version  
     displayName: Build testsuite with latest version 
@@ -140,7 +141,7 @@ stages:
           packagePublishDescription: 'publish tar to azure feed'
 
 
-# Build testsuite with selected version
+# Build testsuite with selected version and selected mainsuite jar
 # - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
 - ${{ if and(ne(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None')) }}:
   - stage: Build_testsuite_selected_version
@@ -197,7 +198,7 @@ stages:
           goals: 'package'
           options: '-Dmaven.test.failure.ignore=true' 
 
-# Build testsuite with selected version
+# Build testsuite with selected version and pom.xml noted mainsuite jar
 # - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
 - ${{ if and(ne(parameters.Testsuite_Version, 'Latest'), eq(parameters.Mainsuite_feed_Version, 'None')) }}:
   - stage: Build_testsuite_selected_version
