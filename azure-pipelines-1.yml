@@ -17,7 +17,6 @@ parameters:
     default: None
   
 stages:
-
 # Build testsuite with latest version
 
 - ${{ if eq(parameters.Testsuite_Version, 'None') }}:
