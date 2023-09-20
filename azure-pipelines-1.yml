@@ -15,16 +15,12 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
-    description: 'Enter the desired build configuration (optional).'
+    # description: 'Enter the desired build configuration (optional).'
 
   - name: Mainsuite_feed_Version
     displayName: 'Mainsuite Version'
     type: string
     default: 'None'
-
-variables:
-- name: Mainsuite_Version
-  value: ${{ parameters.Mainsuite_feed_Version }}
 
 stages:
   
@@ -34,6 +30,9 @@ stages:
     displayName: Build testsuite with latest version 
     jobs:
     - job: TarCovertion_Build_testsuite_latest_version
+      variables:
+      - name: Mainsuite_Version
+        value: ${{ parameters.Mainsuite_feed_Version }}
       steps:
       - task: replacetokens@5
         inputs:
