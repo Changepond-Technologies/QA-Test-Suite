@@ -16,14 +16,14 @@ parameters:
     type: string
     default: 'Latest'
 
-  - name: Mainsuite_Version
+  - name: Mainsuite_feed_Version
     displayName: 'Mainsuite Version'
     type: string
     default: 'None'
 
-# variables:
-# - name: mainsuite_version
-#   value: 2.0.0-SNAPSHOT
+variables:
+- name: Mainsuite_Version
+  value: ${{ parameters.Mainsuite_feed_Version }}
 
 stages:
   
