@@ -15,9 +15,15 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
-variables:
-- name: mainsuite_version
-  value: 2.0.0-SNAPSHOT
+
+  - name: Mainsuite_Version
+    displayName: 'Mainsuite Version'
+    type: string
+    default: '1.0.0-SNAPSHOT'
+
+# variables:
+# - name: mainsuite_version
+#   value: 2.0.0-SNAPSHOT
   
 stages:
 
