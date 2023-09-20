@@ -78,7 +78,6 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            pwd
             mkdir unzipfolder
             mkdir tarfolder
       - task: UniversalPackages@0
