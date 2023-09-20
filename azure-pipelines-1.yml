@@ -17,10 +17,11 @@ parameters:
     default: ''
   
 stages:
-- stage: TarCovertion
-  displayName: Covert to Tar
+- ${{ if eq(parameters.Testsuite_Version, '') }}:
+- stage: Build_testsuite_latest_version
+  displayName: Build testsuite with latest version
   jobs:
-  - job: TarCovertion
+  - job: TarCovertion_Build_testsuite_selected_version
     steps:
     
     - task: Maven@4
@@ -42,12 +43,11 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          cd /home/vsts/work/1/s/
-          tar -cvf testsuite.tar --directory=. *
           pwd
-          mkdir untarfolder
-          mkdir tarfolder
+          tar -cvf testsuite.tar --directory=. *
+          
     - task: CopyFiles@2
+      displayName: Copy the tar file
       inputs:
         Contents: '*.tar'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
@@ -62,8 +62,20 @@ stages:
         vstsFeedPackagePublish: 'testsuite.tar'
         versionOption: 'patch'
         packagePublishDescription: 'publish tar to azure feed'
-      name: getPackageVersion  # Set a unique name for this step
-          
+
+- stage: Build_testsuite_selected_version
+  displayName: Build testsuite selected version
+  jobs:
+  - job: TarCovertion_Build_testsuite_selected_version
+    steps:
+    - task: Bash@3
+      displayName: Create path
+      inputs:
+        targetType: 'inline'
+        script: |
+          pwd
+          mkdir untarfolder
+          mkdir tarfolder
     - task: UniversalPackages@0
       displayName: Download the TAR file from feed
       inputs:
@@ -72,10 +84,9 @@ stages:
         feedsToUse: 'internal'
         vstsFeed: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
         vstsFeedPackage: '2392dfaf-1c23-40a5-a829-e75d0104a0fa'
-        # vstsPackageVersion: '*'
         vstsPackageVersion: '${{ parameters.Testsuite_Version }}'
     - task: Bash@3
-      displayName: Display Folder with untar files
+      displayName: Unzip the Tar file
       inputs:
         targetType: 'inline'
         script: |
