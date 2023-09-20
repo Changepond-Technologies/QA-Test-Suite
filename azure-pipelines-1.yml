@@ -14,6 +14,7 @@ parameters:
   - name: Testsuite_Version
     displayName: 'Testsuite Version'
     type: string
+    default: None
   
 stages:
 - ${{ if eq(parameters.Testsuite_Version, '') }}:
