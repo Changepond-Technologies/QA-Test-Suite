@@ -17,7 +17,7 @@ parameters:
     default: None
   
 stages:
-- ${{ if eq(parameters.Testsuite_Version, '') }}:
+- ${{ if eq(parameters.Testsuite_Version, 'None') }}:
 - stage: Build_testsuite_latest_version
   displayName: Build testsuite with latest version
   jobs:
