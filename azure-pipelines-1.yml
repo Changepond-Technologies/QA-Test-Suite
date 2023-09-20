@@ -15,7 +15,7 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
-    # description: 'Enter the desired build configuration (optional).'
+    description: 'Enter the Testsuite version.'
 
   - name: Mainsuite_feed_Version
     displayName: 'Mainsuite Version'
