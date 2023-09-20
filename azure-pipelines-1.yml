@@ -74,12 +74,12 @@ stages:
     - job: TarCovertion_Build_testsuite_selected_version
       steps:
       - task: Bash@3
-        displayName: Create path
+        displayName: Create unzip Directory
         inputs:
           targetType: 'inline'
           script: |
             pwd
-            mkdir untarfolder
+            mkdir unzipfolder
             mkdir tarfolder
       - task: UniversalPackages@0
         displayName: Download the TAR file from feed
@@ -95,11 +95,11 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            tar -xvf $(System.DefaultWorkingDirectory)/tarfolder/testsuite.tar -C $(System.DefaultWorkingDirectory)/untarfolder
+            tar -xvf $(System.DefaultWorkingDirectory)/tarfolder/testsuite.tar -C $(System.DefaultWorkingDirectory)/unzipfolder
             echo "Display tar File"
             ls $(System.DefaultWorkingDirectory)/tarfolder
             echo "Display Untar File"
-            ls $(System.DefaultWorkingDirectory)/untarfolder
+            ls $(System.DefaultWorkingDirectory)/unzipfolder
           
           
     
