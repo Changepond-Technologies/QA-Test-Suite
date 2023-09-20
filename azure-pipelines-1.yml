@@ -15,7 +15,7 @@ parameters:
     displayName: 'Testsuite Version'
     type: string
     default: 'Latest'
-    description: 'Enter the Testsuite version.'
+    # description: 'Enter the Testsuite Version (optional).'
 
   - name: Mainsuite_feed_Version
     displayName: 'Mainsuite Version'
