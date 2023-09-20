@@ -24,15 +24,16 @@ parameters:
 # variables:
 # - name: mainsuite_version
 #   value: 2.0.0-SNAPSHOT
-  
-stages:
 
+stages:
+  
 # Build testsuite with latest version
 - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
   - stage: Build_testsuite_latest_version
-    displayName: Build testsuite with latest version
+    
     jobs:
     - job: TarCovertion_Build_testsuite_selected_version
+      displayName: Build testsuite with latest version
       steps:
       - task: replacetokens@5
         inputs:
@@ -90,9 +91,10 @@ stages:
 # Build testsuite with selected version
 - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
   - stage: Build_testsuite_selected_version
-    displayName: Build testsuite selected version
+    
     jobs:
     - job: TarCovertion_Build_testsuite_selected_version
+      displayName: Build testsuite selected version
       steps:
       - task: Bash@3
         displayName: Create unzip Directory
