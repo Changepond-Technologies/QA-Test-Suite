@@ -25,7 +25,7 @@ parameters:
   - name: VersionOption
     displayName: 'Version Options'
     type: string
-    default: ''
+    default: ' '
     values:
       - major 
       - minor 
