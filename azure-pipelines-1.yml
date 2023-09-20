@@ -17,8 +17,8 @@ parameters:
     default: 'Latest'
   
 stages:
-# Build testsuite with latest version
 
+# Build testsuite with latest version
 - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
   - stage: Build_testsuite_latest_version
     displayName: Build testsuite with latest version
@@ -65,8 +65,8 @@ stages:
           versionOption: 'patch'
           packagePublishDescription: 'publish tar to azure feed'
 
-# Build testsuite with selected version
 
+# Build testsuite with selected version
 - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
   - stage: Build_testsuite_selected_version
     displayName: Build testsuite selected version
