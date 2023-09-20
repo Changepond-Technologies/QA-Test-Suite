@@ -25,8 +25,9 @@ parameters:
   - name: VersionOption
     displayName: 'Version Options'
     type: string
-    default: ' '
+    default: 'None'
     values:
+      - None
       - major 
       - minor 
       - patch
