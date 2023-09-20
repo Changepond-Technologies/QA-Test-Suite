@@ -19,7 +19,7 @@ parameters:
   - name: Mainsuite_Version
     displayName: 'Mainsuite Version'
     type: string
-    default: '1.0.0-SNAPSHOT'
+    default: 'fill the mainsuite version'
 
 # variables:
 # - name: mainsuite_version
