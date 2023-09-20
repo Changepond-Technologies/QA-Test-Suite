@@ -21,6 +21,14 @@ parameters:
     displayName: 'Mainsuite Version'
     type: string
     default: 'None'
+  
+  - name: VersionOption
+    type: string
+    default: 'patch'  # Set the default value to 'patch'
+
+variables:
+  - name: VersionOption
+    value: 'patch'
 
 stages:
   
@@ -84,7 +92,7 @@ stages:
           feedsToUsePublish: 'internal'
           vstsFeedPublish: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
           vstsFeedPackagePublish: 'testsuite.tar'
-          versionOption: 'patch'
+          versionOption: ${{ parameters.VersionOption }}
           packagePublishDescription: 'publish tar to azure feed'
 
 
