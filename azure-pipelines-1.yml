@@ -17,7 +17,7 @@ parameters:
     default: 'Latest'
     # description: 'Enter the Testsuite Version (optional).'
 
-  - name: Mainsuite_Version
+  - name: Mainsuite_feed_Version
     displayName: 'Mainsuite Versions'
     type: string
     default: 'None'
@@ -36,7 +36,7 @@ stages:
   
 # Build testsuite with latest version
 # - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
-- ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
+- ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
   - stage: Build_testsuite_latest_version  
     displayName: Build testsuite with latest version 
     jobs:
