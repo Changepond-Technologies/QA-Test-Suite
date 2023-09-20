@@ -36,60 +36,6 @@ variables:
     value: ${{ parameters.Mainsuite_feed_Version }}
 
 stages:
-  
-# Build testsuite with latest version and using new mainsuite jar
-# - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
-- ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
-  - stage: Build_testsuite_latest_version  
-    displayName: Build testsuite with latest version 
-    jobs:
-    - job: TarCovertion_Build_testsuite_latest_version
-      steps:
-      - task: Bash@3
-        displayName: Override Mainsuite Version
-        inputs:
-          targetType: 'inline'
-          script: |
-            pwd
-            sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+-SNAPSHOT/$(Mainsuite_Version)/g' pom.xml
-      - task: Maven@4
-        displayName: Build Testsuite 
-        inputs:
-          mavenPomFile: 'pom.xml'
-          publishJUnitResults: false
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.11'
-          mavenVersionOption: 'Default'
-          mavenAuthenticateFeed: true
-          effectivePomSkip: false
-          sonarQubeRunAnalysis: false
-          goals: 'package'
-          options: '-Dmaven.test.failure.ignore=true' 
-      - task: Bash@3
-        displayName: Convert to Tar
-        inputs:
-          targetType: 'inline'
-          script: |
-            pwd
-            tar -cvf testsuite.tar --directory=. *
-            
-      - task: CopyFiles@2
-        displayName: Copy the tar file
-        inputs:
-          Contents: '*.tar'
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  
-      - task: UniversalPackages@0
-        displayName: Publish the TAR file to feed
-        inputs:
-          command: 'publish'
-          publishDirectory: '$(Build.ArtifactStagingDirectory)'
-          feedsToUsePublish: 'internal'
-          vstsFeedPublish: '18c872ec-cca1-465c-8997-d91402298e49/bbd4590d-d732-49e2-891a-5ab52345f8cd'
-          vstsFeedPackagePublish: 'testsuite.tar'
-          versionOption: '${{ parameters.VersionOption }}'
-          packagePublishDescription: 'publish tar to azure feed'
 
 # Build testsuite with latest version and using pom.xml noted mainsuite jar
 - ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), eq(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
@@ -140,6 +86,36 @@ stages:
           versionOption: '${{ parameters.VersionOption }}'
           packagePublishDescription: 'publish tar to azure feed'
 
+# Build testsuite with latest version and using new mainsuite jar
+# - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
+- ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.VersionOption, 'None')) }}:
+  - stage: Build_testsuite_latest_version  
+    displayName: Build testsuite with latest version 
+    jobs:
+    - job: TarCovertion_Build_testsuite_latest_version
+      steps:
+      - task: Bash@3
+        displayName: Override Mainsuite Version
+        inputs:
+          targetType: 'inline'
+          script: |
+            pwd
+            sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+-SNAPSHOT/$(Mainsuite_Version)/g' pom.xml
+      - task: Maven@4
+        displayName: Build Testsuite 
+        inputs:
+          mavenPomFile: 'pom.xml'
+          publishJUnitResults: false
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
+          mavenVersionOption: 'Default'
+          mavenAuthenticateFeed: true
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: false
+          goals: 'package'
+          options: '-Dmaven.test.failure.ignore=true' 
+     
 
 # Build testsuite with selected version and selected mainsuite jar
 # - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
