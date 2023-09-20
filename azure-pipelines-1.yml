@@ -25,7 +25,8 @@ parameters:
 stages:
   
 # Build testsuite with latest version
-- ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
+# - ${{ if eq(parameters.Testsuite_Version, 'Latest') }}:
+- ${{ if and(eq(parameters.Testsuite_Version, 'Latest'), ne(parameters.Mainsuite_feed_Version, 'None')) }}:
   - stage: Build_testsuite_latest_version  
     displayName: Build testsuite with latest version 
     jobs:
@@ -88,7 +89,8 @@ stages:
 
 
 # Build testsuite with selected version
-- ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
+# - ${{ if ne(parameters.Testsuite_Version, 'Latest') }}:
+- ${{ if and(ne(parameters.Testsuite_Version, 'Latest'), eq(parameters.Mainsuite_feed_Version, 'None')) }}:
   - stage: Build_testsuite_selected_version
     displayName: Build testsuite selected version
     jobs:
