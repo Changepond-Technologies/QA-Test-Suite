@@ -1,0 +1,57 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: Tag_Name
+    displayName: 'Testsuite Versions'
+    type: string
+    default: 'None'
+
+  - name: Mainsuite_feed_Version
+    displayName: 'Mainsuite Versions'
+    type: string
+    default: 'None'
+  
+variables:
+  - name: Mainsuite_Version
+    value: ${{ parameters.Mainsuite_feed_Version }}
+
+stages:
+
+# Build testsuite with latest version and using pom.xml noted mainsuite jar
+- ${{ if and(ne(parameters.Mainsuite_feed_Version, 'None'), ne(parameters.Tag_Name, 'None')) }}:
+  - stage: Add_Tag_Test_Suite
+    displayName: Add Tag Test Suite
+    jobs:
+    - job: Add_Tag_Test_Suite
+      variables:
+      - name: Mainsuite_Version
+        value: ${{ parameters.Mainsuite_feed_Version }}
+      steps:
+      - task: Maven@4
+        displayName: Build Testsuite 
+        inputs:
+          mavenPomFile: 'pom.xml'
+          publishJUnitResults: false
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
+          mavenVersionOption: 'Default'
+          mavenAuthenticateFeed: true
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: false
+          goals: 'package'
+          options: '-Dmaven.test.failure.ignore=true' 
+      
+          
+          
+    
