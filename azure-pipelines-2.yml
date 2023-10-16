@@ -12,7 +12,7 @@ pool:
 
 parameters:
   - name: Tag_Name
-    displayName: 'Testsuite Versions'
+    displayName: 'Tag_Name'
     type: string
     default: 'None'
 
