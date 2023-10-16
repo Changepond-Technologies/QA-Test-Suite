@@ -52,7 +52,7 @@ stages:
           effectivePomSkip: false
           sonarQubeRunAnalysis: false
           goals: 'package'
-          options: '--tags @E2E -Dmaven.test.failure.ignore=true' 
+          options: '-Dcucumber.filter.tags="@E2E" -Dmaven.test.failure.ignore=true' 
       
           
           
