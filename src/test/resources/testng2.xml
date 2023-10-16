@@ -7,10 +7,4 @@
 			<class name="com.ep.cucumber.runner.RunnerClass1" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="Test1">
-		<parameter name="browsername" value="chrome"></parameter>
-		<classes>
-			<class name="com.ep.cucumber.runner.TestRunner" />
-		</classes>
-	</test> <!-- Test -->
 </suite> <!-- Suite -->
