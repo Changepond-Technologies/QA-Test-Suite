@@ -8,7 +8,7 @@ import com.ep.cucumber.hooks.ScenarioHooks;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = { "src\\test\\resources\\features\\PIM.feature" }, glue = {
+@CucumberOptions(features = { "src//test//resources//features//PIM.feature" }, glue = {
 		"com.ep.cucumber.steps", "com.ep.cucumber.hooks" }, plugin = { "pretty", "html:target/cucumber/report.html",
 				"json:target/cucumber/report.json" }, monochrome = true, dryRun = !true)
 public class RunnerClass1 extends AbstractTestNGCucumberTests {
