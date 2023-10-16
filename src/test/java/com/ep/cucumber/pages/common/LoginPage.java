@@ -38,11 +38,11 @@ public class LoginPage extends PageContext {
 	public void userName() {
 		
 		//stepActions.isPageDisplayed();
-		stepActions.setDataInTextBox(userName, System.getenv("app.username"));
+		stepActions.setDataInTextBox(userName, "Admin");
 	}
 
 	public void password() {
-		stepActions.setDataInTextBox(password, System.getenv("app.password"));
+		stepActions.setDataInTextBox(password, "admin123");
 	}
 
 	// *******************************************************************************************
