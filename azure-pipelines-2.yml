@@ -36,6 +36,8 @@ stages:
       variables:
       - name: Mainsuite_Version
         value: ${{ parameters.Mainsuite_feed_Version }}
+      - name: Tag_Name
+        value: ${{ parameters.Tag_Name }}
       steps:
       - task: Maven@4
         displayName: Build Testsuite 
