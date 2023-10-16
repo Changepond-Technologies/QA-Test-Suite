@@ -21,9 +21,9 @@ parameters:
     type: string
     default: 'None'
   
-variables:
-  - name: Mainsuite_Version
-    value: ${{ parameters.Mainsuite_feed_Version }}
+# variables:
+#   - name: Mainsuite_Version
+#     value: ${{ parameters.Mainsuite_feed_Version }}
 
 stages:
 
