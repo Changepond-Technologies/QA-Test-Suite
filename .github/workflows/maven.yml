@@ -37,7 +37,7 @@ jobs:
       run: |
         mvn clean install \
           -Dmaven.repo.username=MainSiute-Feed \
-          -Dmaven.repo.password=fxfym2jzzlpxt4scmelegyohyfwhp4nioatef6j7bcxqefx56jwq 
+          -Dmaven.repo.password=32yasds3qa6lqsxdnibsgugep7itvqjnljd3eliq26yncrqyx63a 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
