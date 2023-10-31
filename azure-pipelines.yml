@@ -85,15 +85,15 @@ stages:
         buildNumber: '$(Build.BuildNumber)'
         failNoOp: true
 
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: |
-          tar -xvf /home/vsts/work/1/s/tarfolder/testsuite.tar -C /home/vsts/work/1/s/untarfolder
-          echo "Display tar File"
-          ls /home/vsts/work/1/s/tarfolder
-          echo "Display Untar File"
-          ls /home/vsts/work/1/s/untarfolder
+    # - task: Bash@3
+    #   inputs:
+    #     targetType: 'inline'
+    #     script: |
+    #       tar -xvf /home/vsts/work/1/s/tarfolder/testsuite.tar -C /home/vsts/work/1/s/untarfolder
+    #       echo "Display tar File"
+    #       ls /home/vsts/work/1/s/tarfolder
+    #       echo "Display Untar File"
+    #       ls /home/vsts/work/1/s/untarfolder
           
           
     
